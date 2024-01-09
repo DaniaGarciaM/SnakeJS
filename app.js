@@ -63,11 +63,16 @@ function nextMove(){
     })
 }
 
+let direccion = 1;
+
 setInterval(() => {
     ctx.fillRect(0,0,600,400);
     // comida.aparece();
     // comida.pinta();
     snake.forEach(cuerpo => cuerpo.pinta());
-    posX ++;
+    if(direccion === 1) posX++;
+    else if(direccion === 2) posY++;
+    else if(direccion === 3) posX--;
+    else posX--;
     nextMove();
 }, 500);
