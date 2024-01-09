@@ -18,8 +18,8 @@ snake.push({
 snake.push({
     x: 1,
     y: 1,
-    xNext: 0,
-    yNext: 0,
+    xNext: 2,
+    yNext: 1,
     pinta: function(){
         ctx.font = '20px Serif';
         ctx.fillText('🤍', this.x * 20, this.y * 20);
@@ -28,8 +28,8 @@ snake.push({
 snake.push({
     x: 0,
     y: 1,
-    xNext: 0,
-    yNext: 0,
+    xNext: 1,
+    yNext: 1,
     pinta: function(){
         ctx.font = '20px Serif';
         ctx.fillText('🤍', this.x * 20, this.y * 20);
@@ -65,9 +65,9 @@ function nextMove(){
 
 setInterval(() => {
     ctx.fillRect(0,0,600,400);
-    nextMove();
-    posX ++;
     // comida.aparece();
     // comida.pinta();
     snake.forEach(cuerpo => cuerpo.pinta());
+    posX ++;
+    nextMove();
 }, 500);
