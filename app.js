@@ -1,5 +1,9 @@
 const lienzo = document.querySelector('#lienzo');
 const ctx = lienzo.getContext('2d');
+
+let posX = 2;
+let posY = 1;
+
 const snake = [];
 snake.push({
     x: 2,
@@ -7,8 +11,8 @@ snake.push({
     xNext: 0,
     yNext: 0,
     pinta: function(){
-        ctx.font = '25px Serif';
-        ctx.fillText('👨🏻‍🌾', this.x * 20, this.y * 20);
+        ctx.font = '20px Serif';
+        ctx.fillText('🐮', this.x * 20, this.y * 20);
     }
 });
 snake.push({
@@ -17,8 +21,8 @@ snake.push({
     xNext: 0,
     yNext: 0,
     pinta: function(){
-        ctx.font = '25px Serif';
-        ctx.fillText('🌽', this.x * 20, this.y * 20);
+        ctx.font = '20px Serif';
+        ctx.fillText('🤍', this.x * 20, this.y * 20);
     }
 });
 snake.push({
@@ -27,8 +31,8 @@ snake.push({
     xNext: 0,
     yNext: 0,
     pinta: function(){
-        ctx.font = '25px Serif';
-        ctx.fillText('🌽', this.x * 20, this.y * 20);
+        ctx.font = '20px Serif';
+        ctx.fillText('🤍', this.x * 20, this.y * 20);
     }
 });
 
@@ -45,8 +49,24 @@ const comida = {
     }
 }
 
+function nextMove(){
+    snake.forEach((cuerpo, index) => {
+        if(index === 0){
+            cuerpo.x = posX;
+            cuerpo.y = posY;
+        }else{
+            cuerpo.x = cuerpo.xNext;
+            cuerpo.y = cuerpo.yNext;
+            cuerpo.xNext = snake[index - 1].x;
+            cuerpo.yNext = snake[index - 1].y;
+        }
+    })
+}
+
 setInterval(() => {
     ctx.fillRect(0,0,600,400);
+    nextMove();
+    posX ++;
     // comida.aparece();
     // comida.pinta();
     snake.forEach(cuerpo => cuerpo.pinta());
