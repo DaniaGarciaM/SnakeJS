@@ -74,8 +74,14 @@ setInterval(() => {
     else if (direccion === 2) posY++;
     else if (direccion === 3) posX--;
     else posY--;
+
+    if(posX >= 30) posX = 0;
+    else if(posX <= 0) posX = 30;
+    if(posY >= 20) posY=1;
+    else if(posY <= 0) posY =20; 
+
     nextMove();
-}, 500);
+}, 200);
 
 document.querySelector('body')
     .addEventListener('keydown', function(e){
