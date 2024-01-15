@@ -5,6 +5,9 @@ let posX = 2;
 let posY = 1;
 let direccion = 1;
 
+const eating = new Audio('./moo.mp3');
+const dead = new Audio('./oh.mp3');
+
 function start() {
     posX = 2;
     posY = 1;
@@ -74,6 +77,7 @@ function nextMove() {
 
 function checkEat() {
     if (snake[0].x === comida.x && snake[0].y === comida.y) {
+        eating.play();
         snake.push({ ...snake[1] });
         comida.aparece();
     }
@@ -99,6 +103,7 @@ setInterval(() => {
 
     checkEat();
     if (gameOver()) {
+        dead.play();
         alert('Perdiste  :(');
         snake = start();
     }
